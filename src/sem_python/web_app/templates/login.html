@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Sign in · Semester ML Service{% endblock %}
+
+{% block content %}
+<div class="auth-layout">
+  <section>
+    <h1 class="h3 mb-3">Sign in</h1>
+    <p class="text-secondary">Use your account to request predictions and view saved history.</p>
+  </section>
+
+  <form method="post" class="panel">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.username.label(class="form-label") }}
+      {{ form.username(class="form-control", autocomplete="username") }}
+    </div>
+    <div class="mb-3">
+      {{ form.password.label(class="form-label") }}
+      {{ form.password(class="form-control", autocomplete="current-password") }}
+    </div>
+    {{ form.submit(class="btn btn-primary w-100") }}
+    <p class="text-secondary small mt-3 mb-0">
+      No account yet? <a href="{{ url_for('register') }}">Create one</a>.
+    </p>
+  </form>
+</div>
+{% endblock %}

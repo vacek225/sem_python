@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Register · Semester ML Service{% endblock %}
+
+{% block content %}
+<div class="auth-layout">
+  <section>
+    <h1 class="h3 mb-3">Create account</h1>
+    <p class="text-secondary">Passwords are hashed before being stored in PostgreSQL.</p>
+  </section>
+
+  <form method="post" class="panel">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+      {{ form.username.label(class="form-label") }}
+      {{ form.username(class="form-control", autocomplete="username") }}
+    </div>
+    <div class="mb-3">
+      {{ form.password.label(class="form-label") }}
+      {{ form.password(class="form-control", autocomplete="new-password") }}
+    </div>
+    {{ form.submit(class="btn btn-primary w-100") }}
+    <p class="text-secondary small mt-3 mb-0">
+      Already registered? <a href="{{ url_for('login') }}">Sign in</a>.
+    </p>
+  </form>
+</div>
+{% endblock %}

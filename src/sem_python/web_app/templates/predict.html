@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Predict · Semester ML Service{% endblock %}
+
+{% block content %}
+<div class="page-heading">
+  <div>
+    <h1 class="h3 mb-1">Iris species prediction</h1>
+    <p class="text-secondary mb-0">Enter flower measurements in centimeters.</p>
+  </div>
+  {% if model_info %}
+    <div class="model-meta">
+      <span>{{ model_info.name }}</span>
+      <span>v{{ model_info.version }}</span>
+    </div>
+  {% endif %}
+</div>
+
+<div class="workspace-grid">
+  <form method="post" class="panel">
+    {{ form.hidden_tag() }}
+    <div class="row g-3">
+      <div class="col-md-6">
+        {{ form.sepal_length.label(class="form-label") }}
+        {{ form.sepal_length(class="form-control", step="0.1") }}
+      </div>
+      <div class="col-md-6">
+        {{ form.sepal_width.label(class="form-label") }}
+        {{ form.sepal_width(class="form-control", step="0.1") }}
+      </div>
+      <div class="col-md-6">
+        {{ form.petal_length.label(class="form-label") }}
+        {{ form.petal_length(class="form-control", step="0.1") }}
+      </div>
+      <div class="col-md-6">
+        {{ form.petal_width.label(class="form-label") }}
+        {{ form.petal_width(class="form-control", step="0.1") }}
+      </div>
+    </div>
+    {{ form.submit(class="btn btn-primary mt-3") }}
+  </form>
+
+  <aside class="panel result-panel">
+    <h2 class="h5">Result</h2>
+    {% if prediction %}
+      <dl class="result-list">
+        <dt>Species</dt>
+        <dd>{{ prediction.species }}</dd>
+        <dt>Class ID</dt>
+        <dd>{{ prediction.class_id }}</dd>
+      </dl>
+    {% else %}
+      <p class="text-secondary mb-0">The latest prediction will appear here.</p>
+    {% endif %}
+  </aside>
+</div>
+{% endblock %}
