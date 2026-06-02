@@ -15,7 +15,7 @@ def login_required(view: Callable[P, R]) -> Callable[P, R | Response]:
     @wraps(view)
     def wrapped(*args: P.args, **kwargs: P.kwargs) -> R | Response:
         if "user_id" not in session:
-            flash("Please sign in to continue.", "warning")
+            flash("Войдите в систему, чтобы продолжить.", "warning")
             return redirect(url_for("login"))
         return view(*args, **kwargs)
 

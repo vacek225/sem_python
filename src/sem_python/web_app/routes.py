@@ -49,7 +49,7 @@ def register_routes(app: Flask) -> None:
                     session["user_id"] = user.id
                     session["username"] = user.username
                     logger.info("Registered user %s", user.username)
-                    flash("Account created successfully.", "success")
+                    flash("Аккаунт успешно создан.", "success")
                     return redirect(url_for("predict"))
         return render_template("register.html", form=form)
 
@@ -67,7 +67,7 @@ def register_routes(app: Flask) -> None:
                     session["user_id"] = user.id
                     session["username"] = user.username
                     logger.info("User %s signed in", user.username)
-                    flash("Signed in successfully.", "success")
+                    flash("Вход выполнен успешно.", "success")
                     return redirect(url_for("predict"))
         return render_template("login.html", form=form)
 
@@ -77,7 +77,7 @@ def register_routes(app: Flask) -> None:
         username = session.get("username")
         session.clear()
         logger.info("User %s signed out", username)
-        flash("Signed out.", "info")
+        flash("Вы вышли из системы.", "info")
         return redirect(url_for("login"))
 
     @app.route("/predict", methods=["GET", "POST"])
@@ -103,7 +103,7 @@ def register_routes(app: Flask) -> None:
                 prediction = _ml_client(app).predict(features)
             except (RequestException, ValueError) as exc:
                 logger.error("Prediction failed: %s", exc)
-                flash("ML API is unavailable. Please try again later.", "danger")
+                flash("ML API недоступен. Попробуйте позже.", "danger")
             else:
                 with get_db_session(app) as db:
                     history = PredictionHistoryService(SqlAlchemyPredictionRepository(db))
@@ -113,7 +113,7 @@ def register_routes(app: Flask) -> None:
                         prediction=prediction,
                     )
                 logger.info("Saved prediction for user %s", current_user_id())
-                flash("Prediction saved to history.", "success")
+                flash("Предсказание сохранено в истории.", "success")
 
         return render_template(
             "predict.html",

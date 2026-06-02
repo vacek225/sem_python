@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}History · Semester ML Service{% endblock %}
+{% block title %}История · ML-сервис{% endblock %}
 
 {% block content %}
 <div class="page-heading">
   <div>
-    <h1 class="h3 mb-1">Prediction history</h1>
-    <p class="text-secondary mb-0">Saved requests for your account.</p>
+    <h1 class="h3 mb-1">История предсказаний</h1>
+    <p class="text-secondary mb-0">Сохранённые запросы вашего аккаунта.</p>
   </div>
 </div>
 
@@ -15,9 +15,9 @@
     <table class="table align-middle mb-0">
       <thead>
         <tr>
-          <th scope="col">Date</th>
-          <th scope="col">Input</th>
-          <th scope="col">Prediction</th>
+          <th scope="col">Дата</th>
+          <th scope="col">Входные данные</th>
+          <th scope="col">Предсказание</th>
         </tr>
       </thead>
       <tbody>
@@ -38,7 +38,7 @@
   </div>
 {% else %}
   <div class="panel">
-    <p class="text-secondary mb-0">No predictions yet.</p>
+    <p class="text-secondary mb-0">Предсказаний пока нет.</p>
   </div>
 {% endif %}
 {% endblock %}

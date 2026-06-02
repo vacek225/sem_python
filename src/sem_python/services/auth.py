@@ -23,11 +23,11 @@ class AuthService:
     def register(self, username: str, password: str) -> User:
         normalized_username = username.strip()
         if not normalized_username or not password:
-            raise InvalidCredentialsError("Username and password are required.")
+            raise InvalidCredentialsError("Имя пользователя и пароль обязательны.")
 
         existing_user = self._users.get_by_username(normalized_username)
         if existing_user is not None:
-            raise UserAlreadyExistsError("User with this username already exists.")
+            raise UserAlreadyExistsError("Пользователь с таким именем уже существует.")
 
         hashed_password = self._password_hasher.hash(password)
         return self._users.add(
@@ -37,9 +37,9 @@ class AuthService:
     def authenticate(self, username: str, password: str) -> User:
         user = self._users.get_by_username(username.strip())
         if user is None:
-            raise InvalidCredentialsError("Invalid username or password.")
+            raise InvalidCredentialsError("Неверное имя пользователя или пароль.")
 
         if not self._password_hasher.verify(password, user.hashed_password):
-            raise InvalidCredentialsError("Invalid username or password.")
+            raise InvalidCredentialsError("Неверное имя пользователя или пароль.")
 
         return user

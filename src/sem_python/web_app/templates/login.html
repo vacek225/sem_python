@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Sign in · Semester ML Service{% endblock %}
+{% block title %}Вход · ML-сервис{% endblock %}
 
 {% block content %}
 <div class="auth-layout">
   <section>
-    <h1 class="h3 mb-3">Sign in</h1>
-    <p class="text-secondary">Use your account to request predictions and view saved history.</p>
+    <h1 class="h3 mb-3">Вход</h1>
+    <p class="text-secondary">Войдите, чтобы получать предсказания и просматривать историю запросов.</p>
   </section>
 
   <form method="post" class="panel">
@@ -21,7 +21,7 @@
     </div>
     {{ form.submit(class="btn btn-primary w-100") }}
     <p class="text-secondary small mt-3 mb-0">
-      No account yet? <a href="{{ url_for('register') }}">Create one</a>.
+      Ещё нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрируйтесь</a>.
     </p>
   </form>
 </div>

@@ -6,32 +6,32 @@ from wtforms.validators import DataRequired, Length, NumberRange
 
 
 class RegisterForm(FlaskForm):
-    username = StringField("Username", validators=[DataRequired(), Length(min=3, max=80)])
-    password = PasswordField("Password", validators=[DataRequired(), Length(min=6, max=128)])
-    submit = SubmitField("Create account")
+    username = StringField("Имя пользователя", validators=[DataRequired(), Length(min=3, max=80)])
+    password = PasswordField("Пароль", validators=[DataRequired(), Length(min=6, max=128)])
+    submit = SubmitField("Создать аккаунт")
 
 
 class LoginForm(FlaskForm):
-    username = StringField("Username", validators=[DataRequired(), Length(min=3, max=80)])
-    password = PasswordField("Password", validators=[DataRequired()])
-    submit = SubmitField("Sign in")
+    username = StringField("Имя пользователя", validators=[DataRequired(), Length(min=3, max=80)])
+    password = PasswordField("Пароль", validators=[DataRequired()])
+    submit = SubmitField("Войти")
 
 
 class PredictionForm(FlaskForm):
     sepal_length = FloatField(
-        "Sepal length",
+        "Длина чашелистика",
         validators=[DataRequired(), NumberRange(min=0.1, max=20)],
     )
     sepal_width = FloatField(
-        "Sepal width",
+        "Ширина чашелистика",
         validators=[DataRequired(), NumberRange(min=0.1, max=20)],
     )
     petal_length = FloatField(
-        "Petal length",
+        "Длина лепестка",
         validators=[DataRequired(), NumberRange(min=0.1, max=20)],
     )
     petal_width = FloatField(
-        "Petal width",
+        "Ширина лепестка",
         validators=[DataRequired(), NumberRange(min=0.1, max=20)],
     )
-    submit = SubmitField("Predict")
+    submit = SubmitField("Получить предсказание")

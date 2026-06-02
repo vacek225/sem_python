@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Register · Semester ML Service{% endblock %}
+{% block title %}Регистрация · ML-сервис{% endblock %}
 
 {% block content %}
 <div class="auth-layout">
   <section>
-    <h1 class="h3 mb-3">Create account</h1>
-    <p class="text-secondary">Passwords are hashed before being stored in PostgreSQL.</p>
+    <h1 class="h3 mb-3">Создание аккаунта</h1>
+    <p class="text-secondary">Пароли хэшируются перед сохранением в PostgreSQL.</p>
   </section>
 
   <form method="post" class="panel">
@@ -21,7 +21,7 @@
     </div>
     {{ form.submit(class="btn btn-primary w-100") }}
     <p class="text-secondary small mt-3 mb-0">
-      Already registered? <a href="{{ url_for('login') }}">Sign in</a>.
+      Уже зарегистрированы? <a href="{{ url_for('login') }}">Войдите</a>.
     </p>
   </form>
 </div>

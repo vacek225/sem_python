@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Predict · Semester ML Service{% endblock %}
+{% block title %}Предсказание · ML-сервис{% endblock %}
 
 {% block content %}
 <div class="page-heading">
   <div>
-    <h1 class="h3 mb-1">Iris species prediction</h1>
-    <p class="text-secondary mb-0">Enter flower measurements in centimeters.</p>
+    <h1 class="h3 mb-1">Предсказание вида ириса</h1>
+    <p class="text-secondary mb-0">Введите измерения цветка в сантиметрах.</p>
   </div>
   {% if model_info %}
     <div class="model-meta">
@@ -41,16 +41,16 @@
   </form>
 
   <aside class="panel result-panel">
-    <h2 class="h5">Result</h2>
+    <h2 class="h5">Результат</h2>
     {% if prediction %}
       <dl class="result-list">
-        <dt>Species</dt>
+        <dt>Вид</dt>
         <dd>{{ prediction.species }}</dd>
-        <dt>Class ID</dt>
+        <dt>ID класса</dt>
         <dd>{{ prediction.class_id }}</dd>
       </dl>
     {% else %}
-      <p class="text-secondary mb-0">The latest prediction will appear here.</p>
+      <p class="text-secondary mb-0">Здесь появится последнее предсказание.</p>
     {% endif %}
   </aside>
 </div>
