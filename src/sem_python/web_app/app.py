@@ -5,6 +5,7 @@ from contextlib import contextmanager
 from typing import Any
 
 from flask import Flask
+from flask_wtf.csrf import CSRFProtect
 from sqlalchemy.orm import Session, sessionmaker
 
 from sem_python.infrastructure.db import create_session_factory
@@ -42,6 +43,8 @@ def create_app(test_config: dict[str, Any] | None = None) -> Flask:
     )
     if test_config is not None:
         app.config.update(test_config)
+
+    CSRFProtect(app)
 
     database_url = str(app.config["DATABASE_URL"])
     fastapi_url = str(app.config["FASTAPI_URL"])
