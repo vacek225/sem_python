@@ -1,4 +1,4 @@
-FROM ghcr.io/astral-sh/uv:python3.11-bookworm-slim
+FROM python:3.11-slim-bookworm
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ COPY pyproject.toml README.md alembic.ini ./
 COPY migrations ./migrations
 COPY src ./src
 
-RUN uv pip install --system .
+RUN pip install --no-cache-dir uv && uv pip install --system .
 
 EXPOSE 5000
 
