@@ -57,6 +57,9 @@ python_version = "3.11"
 strict = true
 warn_unreachable = true
 show_error_codes = true
+namespace_packages = true
+explicit_package_bases = true
+mypy_path = "src"
 plugins = []
 
 [[tool.mypy.overrides]]
